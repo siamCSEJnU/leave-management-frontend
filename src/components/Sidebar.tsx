@@ -10,7 +10,7 @@ export default function Sidebar() {
   const baseItems = [{ name: "Dashboard", href: "/dashboard" }];
 
   const employeeItems = [
-    { name: "My Leaves", href: "/dashboard/leaves" },
+    { name: "My Leaves", href: "/dashboard/my-leaves" },
     { name: "Apply Leave", href: "/dashboard/leaves/apply" },
   ];
 
@@ -34,7 +34,7 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="w-64 bg-white shadow-md h-screen fixed left-0 top-16">
+    <aside className="w-64 bg-white shadow-md h-screen fixed left-0 ">
       <div className="p-6">
         <h2 className="text-lg font-semibold mb-6 text-gray-800">Menu</h2>
         <ul className="space-y-2">

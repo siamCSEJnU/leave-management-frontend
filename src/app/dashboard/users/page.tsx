@@ -5,6 +5,7 @@ import api from "@/src/lib/api";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import UserModal from "@/src/components/UserModal";
+import Link from "next/link";
 
 export default function UserManagement() {
   const [users, setUsers] = useState<any[]>([]);
@@ -62,7 +63,15 @@ export default function UserManagement() {
   if (loading) return <div className="p-10 text-center">Loading...</div>;
 
   return (
-    <div className="p-6">
+    <div className="py-6 px-12">
+      <div className="mb-4">
+        <Link
+          href="/dashboard"
+          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
+        >
+          ← Back to Dashboard
+        </Link>
+      </div>
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">User Management</h1>
         <button

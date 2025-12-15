@@ -27,8 +27,16 @@ export default function TeamLeaves() {
     return <div className="p-10 text-center">Loading team leaves...</div>;
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold mb-8">Team Leaves</h1>
+    <div className="py-6 px-14">
+      <div className="mb-3">
+        <Link
+          href="/dashboard"
+          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
+        >
+          ← Back to Dashboard
+        </Link>
+      </div>
+      <h1 className="text-3xl font-bold mb-8 text-center">Team Leaves</h1>
 
       {leaves.length === 0 ? (
         <p className="text-center text-gray-600">

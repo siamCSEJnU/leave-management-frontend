@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 import toast from "react-hot-toast";
 import api from "@/src/lib/api";
+import Link from "next/link";
 
 export default function ApplyLeave() {
   const [form, setForm] = useState({
@@ -23,7 +24,7 @@ export default function ApplyLeave() {
     try {
       await api.post("/leaves", form);
       toast.success("Leave applied successfully!");
-      router.push("/dashboard/leaves");
+      router.push("/dashboard/my-leaves");
     } catch (err: any) {
       toast.error(err.response?.data?.error || "Failed to apply leave");
     } finally {
@@ -33,7 +34,15 @@ export default function ApplyLeave() {
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-8">Apply for Leave</h1>
+      <div className="mb-5">
+        <Link
+          href="/dashboard"
+          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
+        >
+          ← Back to Dashboard
+        </Link>
+      </div>
+      <h1 className="text-3xl font-bold mb-8 text-center">Apply for Leave</h1>
 
       <form
         onSubmit={handleSubmit}
