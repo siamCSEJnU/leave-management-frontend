@@ -67,7 +67,7 @@ export default function UserManagement() {
       <div className="mb-4">
         <Link
           href="/dashboard"
-          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
+          className="inline-flex items-center gap-2  text-blue-600 hover:text-blue-800 font-medium"
         >
           ← Back to Dashboard
         </Link>
@@ -79,7 +79,7 @@ export default function UserManagement() {
             setEditingUser(null);
             setShowModal(true);
           }}
-          className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
+          className="cursor-pointer bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
         >
           + Create New User
         </button>

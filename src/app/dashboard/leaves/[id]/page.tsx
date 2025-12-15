@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import api from "@/src/lib/api";
 import { Pencil, Trash2, Check, X, MessageSquarePlus } from "lucide-react";
+import { formatDate } from "@/src/utils/formatDate";
 
 export default function LeaveDetails() {
   const { id } = useParams();
@@ -166,11 +167,15 @@ export default function LeaveDetails() {
         <div className="grid grid-cols-2 gap-6 mb-8">
           <div>
             <p className="text-gray-600">Start Date</p>
-            <p className="text-xl font-semibold">{leave.start_date}</p>
+            <p className="text-xl font-semibold">
+              {formatDate(leave.start_date)}
+            </p>
           </div>
           <div>
             <p className="text-gray-600">End Date</p>
-            <p className="text-xl font-semibold">{leave.end_date}</p>
+            <p className="text-xl font-semibold">
+              {formatDate(leave.end_date)}
+            </p>
           </div>
           <div>
             <p className="text-gray-600">Duration</p>
@@ -229,7 +234,7 @@ export default function LeaveDetails() {
             />
             <button
               type="submit"
-              className="mt-3 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 flex items-center gap-2"
+              className="mt-3 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 flex items-center gap-2 cursor-pointer"
             >
               <MessageSquarePlus size={20} />
               Post Comment

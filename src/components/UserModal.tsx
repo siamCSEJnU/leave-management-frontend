@@ -87,6 +87,11 @@ export default function UserModal({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!isEditing && form.password.length < 6) {
+      toast.error("Password must be at least 6 characters");
+      return;
+    }
+
     try {
       let payload: any = { ...form };
       payload.leave_balance = Number(payload.leave_balance);
@@ -139,7 +144,7 @@ export default function UserModal({
           {!isEditing && (
             <>
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-sm font-medium mb-1">
                   Employee ID *
                 </label>
                 <input
@@ -147,13 +152,13 @@ export default function UserModal({
                   type="text"
                   value={form.employee_id}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border rounded-lg"
+                  className="w-full px-4 py-2 border rounded-lg"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-sm font-medium mb-1">
                   Email *
                 </label>
                 <input
@@ -161,13 +166,13 @@ export default function UserModal({
                   type="email"
                   value={form.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border rounded-lg"
+                  className="w-full px-4 py-2 border rounded-lg"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-sm font-medium mb-1">
                   Password *
                 </label>
                 <input
@@ -175,15 +180,16 @@ export default function UserModal({
                   type="password"
                   value={form.password}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border rounded-lg"
+                  className="w-full px-4 py-2 border rounded-lg"
                   required
+                  // minLength={6}
                 />
               </div>
             </>
           )}
 
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-sm font-medium mb-1">
               First Name *
             </label>
             <input
@@ -191,13 +197,13 @@ export default function UserModal({
               type="text"
               value={form.first_name}
               onChange={handleChange}
-              className="w-full px-4 py-3 border rounded-lg"
+              className="w-full px-4 py-2 border rounded-lg"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-sm font-medium mb-1">
               Last Name *
             </label>
             <input
@@ -205,18 +211,18 @@ export default function UserModal({
               type="text"
               value={form.last_name}
               onChange={handleChange}
-              className="w-full px-4 py-3 border rounded-lg"
+              className="w-full px-4 py-2 border rounded-lg"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Role</label>
+            <label className="block text-sm font-medium mb-1">Role</label>
             <select
               name="role"
               value={form.role}
               onChange={handleChange}
-              className="w-full px-4 py-3 border rounded-lg"
+              className="w-full px-4 py-2 border rounded-lg"
             >
               <option value="employee">Employee</option>
               <option value="manager">Manager</option>
@@ -225,7 +231,7 @@ export default function UserModal({
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Manager</label>
+            <label className="block text-sm font-medium mb-1">Manager</label>
             {loadingManagers ? (
               <p className="text-gray-500">Loading...</p>
             ) : (
@@ -233,7 +239,7 @@ export default function UserModal({
                 name="manager_id"
                 value={form.manager_id}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border rounded-lg"
+                className="w-full px-4 py-2 border rounded-lg"
               >
                 <option value="">No manager</option>
                 {managers.map((manager) => (
@@ -246,7 +252,7 @@ export default function UserModal({
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-sm font-medium mb-1">
               Leave Balance
             </label>
             <input
@@ -254,33 +260,33 @@ export default function UserModal({
               type="number"
               value={form.leave_balance}
               onChange={handleChange}
-              className="w-full px-4 py-3 border rounded-lg"
+              className="w-full px-4 py-2 border rounded-lg"
               min="0"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Department</label>
+            <label className="block text-sm font-medium mb-1">Department</label>
             <input
               name="department"
               type="text"
               value={form.department}
               onChange={handleChange}
-              className="w-full px-4 py-3 border rounded-lg"
+              className="w-full px-4 py-2 border rounded-lg"
             />
           </div>
 
-          <div className="col-span-2 flex justify-end space-x-4 mt-8">
+          <div className="col-span-2 flex justify-end space-x-4 mt-4">
             <button
               type="button"
               onClick={onClose}
-              className="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50"
+              className="cursor-pointer px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              className="cursor-pointer px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
             >
               {isEditing ? "Update User" : "Create User"}
             </button>

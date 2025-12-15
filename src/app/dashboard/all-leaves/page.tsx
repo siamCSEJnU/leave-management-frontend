@@ -58,7 +58,8 @@ export default function AllLeaves() {
                       Leave
                     </p>
                     <p className="text-gray-600 mt-2">
-                      {leave.start_date} → {leave.end_date} (
+                      {new Date(leave.start_date).toLocaleDateString("en-GB")} →{" "}
+                      {new Date(leave.end_date).toLocaleDateString("en-GB")} (
                       {leave.duration_days} days)
                     </p>
                     <p className="mt-3">{leave.reason}</p>
