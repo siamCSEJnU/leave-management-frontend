@@ -45,44 +45,47 @@ export default function TeamLeaves() {
       ) : (
         <div className="grid gap-6">
           {leaves.map((leave: any) => (
-            <div key={leave.id} className="bg-white rounded-xl shadow p-6">
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-xl font-semibold">
-                    {leave.employee.first_name} {leave.employee.last_name} -{" "}
-                    {leave.leave_type.toUpperCase()} Leave
-                  </p>
-                  <p className="text-gray-600 mt-2">
-                    {new Date(leave.start_date).toLocaleDateString("en-GB")} →{" "}
-                    {new Date(leave.end_date).toLocaleDateString("en-GB")} (
-                    {leave.duration_days} days)
-                  </p>
-                  <p className="mt-3">{leave.reason}</p>
-                </div>
-                <div className="text-right">
-                  <span
-                    className={`px-4 py-2 rounded-full text-sm font-medium mb-4 block ${
-                      leave.status === "pending"
-                        ? "bg-yellow-100 text-yellow-800"
-                        : leave.status === "approved"
-                        ? "bg-green-100 text-green-800"
-                        : "bg-red-100 text-red-800"
-                    }`}
-                  >
-                    {leave.status.toUpperCase()}
-                  </span>
-
-                  {leave.status === "pending" && (
-                    <Link
-                      href={`/dashboard/leaves/${leave.id}`}
-                      className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+            <Link
+              key={leave.id}
+              href={`/dashboard/leaves/${leave.id}`}
+              className="block"
+            >
+              <div className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <p className="text-xl font-semibold">
+                      {leave.employee.first_name} {leave.employee.last_name} -{" "}
+                      {leave.leave_type.toUpperCase()} Leave
+                    </p>
+                    <p className="text-gray-600 mt-2">
+                      {new Date(leave.start_date).toLocaleDateString("en-GB")} →{" "}
+                      {new Date(leave.end_date).toLocaleDateString("en-GB")} (
+                      {leave.duration_days} days)
+                    </p>
+                    <p className="mt-3">{leave.reason}</p>
+                  </div>
+                  <div className="text-right">
+                    <span
+                      className={`px-4 py-2 rounded-full text-sm font-medium mb-4 block ${
+                        leave.status === "pending"
+                          ? "bg-yellow-100 text-yellow-800"
+                          : leave.status === "approved"
+                          ? "bg-green-100 text-green-800"
+                          : "bg-red-100 text-red-800"
+                      }`}
                     >
-                      Review
-                    </Link>
-                  )}
+                      {leave.status.toUpperCase()}
+                    </span>
+
+                    {leave.status === "pending" && (
+                      <div className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                        Review
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       )}
