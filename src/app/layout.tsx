@@ -36,6 +36,11 @@
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 
+export const metadata = {
+  title: "Leave Management System",
+  description: "Fullstack Laravel + Next.js",
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -43,7 +48,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="min-h-screen bg-gray-100 antialiased">
         {children}
         <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
       </body>

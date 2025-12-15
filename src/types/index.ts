@@ -1,10 +1,14 @@
 export type User = {
-  id: number;
+  id?: number;
+  employee_id: string;
+  email: string;
   first_name: string;
   last_name: string;
-  email: string;
   role: "employee" | "manager" | "admin";
+  department?: string | null;
+  manager_id?: string | null;
   leave_balance: number;
+  is_active: boolean;
 };
 
 export type Leave = {

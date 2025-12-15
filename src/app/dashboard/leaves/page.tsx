@@ -42,11 +42,12 @@ export default function LeavesList() {
       ) : (
         <div className="grid gap-6">
           {leaves.map((leave: any) => (
-            <Link href={`/dashboard/leaves/${leave.id}`} className="block">
-              <div
-                key={leave.id}
-                className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
-              >
+            <Link
+              key={leave.id}
+              href={`/dashboard/leaves/${leave.id}`}
+              className="block"
+            >
+              <div className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
                 <div className="flex justify-between items-start">
                   <div>
                     <p className="text-xl font-semibold">
